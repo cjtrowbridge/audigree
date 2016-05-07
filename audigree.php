@@ -9,11 +9,22 @@
 
 function audigree_automatic_pedigree(){
   ?>
+  
+  <b>Father: </b> <a href="#">Father's Name</a>
+  <b>Mother: </b> <a href="#">Mother's Name</a>
+  
   <b>Siblings:</b>
   <ul>
     <li>sibling a</li>
     <li>sibling b</li>
   </ul>
+  
+  <b>Children:</b>
+  <ul>
+    <li>child a</li>
+    <li>child b</li>
+  </ul>
+  
   <?php
 }
 
