@@ -33,7 +33,6 @@ function audigree_automatic_pedigree(){
         
       }
     ?></p>
-    <br>
     <?php
     /*get father name and slug*/
     $father_name=Audigree_Get_Name_By_ID($this_person->father_id);
