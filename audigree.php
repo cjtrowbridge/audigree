@@ -10,8 +10,10 @@
 function audigree_automatic_pedigree(){
   ?>
   
-  <b>Father: </b> <a href="#">Father's Name</a>
-  <b>Mother: </b> <a href="#">Mother's Name</a>
+  <p><b>Current Page:</b> <?php echo $pagename; ?></p>
+  
+  <p><b>Father: </b> <a href="#">Father's Name</a></p>
+  <p><b>Mother: </b> <a href="#">Mother's Name</a></p>
   
   <b>Siblings:</b>
   <ul>
