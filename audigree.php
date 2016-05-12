@@ -44,7 +44,7 @@ function Audigree_Get_Person($query){
       ";
     }
     $this_person = $wpdb->get_results($sql, OBJECT);
-    return $this_person;
+    return $this_person[0];
   }else{
     //get person by id
     if($person_id==0){
@@ -58,7 +58,7 @@ function Audigree_Get_Person($query){
         person_id = '".$person_id."'
     ";
     $this_person = $wpdb->get_results($sql, OBJECT);
-    return $this_person;
+    return $this_person[0];
   }
 }
 
