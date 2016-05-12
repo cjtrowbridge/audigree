@@ -188,7 +188,7 @@ function audigree_automatic_pedigree(){
     $this_person=Audigree_Get_Person($page_name);
     
     if(!($this_person->image_uri=='')){
-      echo '<img src="'.$this_person->image_uri.'">';
+      echo '<a align="right" width="300" href="'.$this_person->image_uri.'" target="_blank"><img align="right" width="300" src="'.$this_person->image_uri.'"></a>';
     }
     
     
