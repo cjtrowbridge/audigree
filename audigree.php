@@ -159,8 +159,7 @@ function audigree_automatic_pedigree(){
     $page_name=strtolower($page_name);
     $this_person=Audigree_Get_Person($page_name);
     ?>
-    <p>DOB: <?php echo $this_person->date_of_birth; ?></p>
-    <p>DOD: <?php echo $this_person->date_of_birth; ?></p>
+    <p><?php echo $this_person->date_of_birth.' ('.$this_person->place_of_birth.')'; ?> - <?php echo $this_person->date_of_birth.' ('.$this_person->place_of_death.)'; ?></p>
     <br>
     <?php
     /*get father name and slug*/
