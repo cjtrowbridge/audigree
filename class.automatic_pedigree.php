@@ -66,14 +66,14 @@ function audigree_automatic_pedigree(){
       ?>
     </ul>
     
+    <?php 
+    $children=Audigree_Get_Children_By_Parent_ID($this_person->person_id);
+    if(count($children)>0){
+    ?>
+    
     <b>Children:</b>
     <ul>
       <?php 
-      
-      $children=Audigree_Get_Children_By_Parent_ID($this_person->person_id);
-      if(count($children)==0){
-        echo '<li>None Found</li>';
-      }
       foreach($children as $child){
         $child_name=Audigree_Get_Name_By_ID($child->person_id);
         $child_slug=Audigree_Get_Slug_By_ID($child->person_id);
@@ -85,6 +85,7 @@ function audigree_automatic_pedigree(){
       ?>
     </ul>
   <?php
+    }
   }
 }
 
