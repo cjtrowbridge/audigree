@@ -8,6 +8,7 @@
 */
 
 function audigree_automatic_pedigree(){
+  global $wpdb; /*this is the object that lets us run queries*/
   
   $path=parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
   $number_of_slashes_in_request=substr_count($path, '/');
@@ -16,11 +17,13 @@ function audigree_automatic_pedigree(){
     //this is a single argument path, and probably a page for a person
     $page_name=str_replace('/','',$path);
     $page_name=strtolower($page_name);
+    $this_person_name_parts=explode('-',$page_name);
+    $this_person = $wpdb->get_results( 'SELECT * FROM audigree_person WHERE name_first LIKE ', OBJECT );
+    var_dump($this_person);
     ?>
   
       <p><b>Current Page:</b> <?php echo $page_name; ?></p>
-      
-      <p><b>Father: </b> <a href="#">Father's Name</a></p>
+      <p><b>Father: </b> <a href="#"><?php /*$results = $wpdb->get_results( 'SELECT * FROM audigree_person WHERE person_id=3', OBJECT );*/ ?></a></p>
       <p><b>Mother: </b> <a href="#">Mother's Name</a></p>
       
       <b>Siblings:</b>
