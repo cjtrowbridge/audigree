@@ -62,7 +62,21 @@ function Audigree_Get_Person($query){
       return;
     }
     $sql="
-      SELECT * 
+      SELECT 
+        person_id,
+        name_prefix,
+        name_first,
+        name_middle,
+        name_maiden,
+        name_last,
+        ifnull(date_of_birth,'Unknown') as date_of_birth,
+        ifnull(date_of_death,'Unknown') as date_of_death,
+        father_id,
+        mother_id,
+        ifnull(place_of_birth,'Unknown') as place_of_birth,
+        ifnull(place_of_death,'Unknown') as place_of_death,
+        /*biography,*/
+        image_url
       FROM audigree_person 
       WHERE 
         name_first LIKE '".$wpdb->esc_like($this_person_name_parts[0])."'
@@ -98,7 +112,21 @@ function Audigree_Get_Person($query){
       return;
     }
     $sql="
-      SELECT * 
+      SELECT 
+        person_id,
+        name_prefix,
+        name_first,
+        name_middle,
+        name_maiden,
+        name_last,
+        ifnull(date_of_birth,'Unknown') as date_of_birth,
+        ifnull(date_of_death,'Unknown') as date_of_death,
+        father_id,
+        mother_id,
+        ifnull(place_of_birth,'Unknown') as place_of_birth,
+        ifnull(place_of_death,'Unknown') as place_of_death,
+        /*biography,*/
+        image_url
       FROM audigree_person 
       WHERE 
         person_id = '".$person_id."'
