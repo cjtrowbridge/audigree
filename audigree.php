@@ -11,7 +11,6 @@ function audigree_automatic_pedigree(){
   
   $path=parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
   $number_of_slashes_in_request=substr_count($path, '/');
-  echo $number_of_slashes_in_request;
   
   if($number_of_slashes_in_request<=2){
     //this is a single argument path, and probably a page for a person
@@ -19,7 +18,7 @@ function audigree_automatic_pedigree(){
     $page_name=strtolower($page_name);
     ?>
   
-      <p><b>Current Page:</b> <?php $page_name; ?></p>
+      <p><b>Current Page:</b> <?php echo $page_name; ?></p>
       
       <p><b>Father: </b> <a href="#">Father's Name</a></p>
       <p><b>Mother: </b> <a href="#">Mother's Name</a></p>
