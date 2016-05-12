@@ -186,6 +186,12 @@ function audigree_automatic_pedigree(){
     $page_name=str_replace('/','',$path);
     $page_name=strtolower($page_name);
     $this_person=Audigree_Get_Person($page_name);
+    
+    if(!($this_person->image_uri=='')){
+      echo '<img src="'.$this_person->image_uri.'">';
+    }
+    
+    
     ?>
     <p><?php 
       
