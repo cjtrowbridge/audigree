@@ -18,8 +18,42 @@ function audigree_automatic_pedigree(){
     $page_name=str_replace('/','',$path);
     $page_name=strtolower($page_name);
     $this_person_name_parts=explode('-',$page_name);
-    $this_person = $wpdb->get_results( 'SELECT * FROM audigree_person WHERE name_first LIKE ', OBJECT );
+    if(count($this_person_name_parts)<1){
+      echo 'Person Not Found';
+      return;
+    }
+    
+    /*get info about this person*/
+    $sql="
+      SELECT * 
+      FROM audigree_person 
+      WHERE 
+        name_first LIKE '".mysql_real_escape_string($this_person_name_parts[0])."'
+    ";
+    if(isset($this_person_name_parts[1])){
+      $sql.="
+        AND name_middle LIKE '".mysql_real_escape_string($this_person_name_parts[1])."'
+      ";
+    }
+    if(isset($this_person_name_parts[2])){
+      $sql.="
+        AND 
+        (
+          name_last LIKE '".mysql_real_escape_string($this_person_name_parts[2])."' OR
+          name_maiden LIKE '".mysql_real_escape_string($this_person_name_parts[2])."'
+        )
+      ";
+    }
+    if(isset($this_person_name_parts[3])){
+      $sql.="
+        AND name_suffix LIKE '".mysql_real_escape_string($this_person_name_parts[3])."'
+      ";
+    }
+    $this_person = $wpdb->get_results($sql, OBJECT);
     var_dump($this_person);
+    
+    
+    
     ?>
   
       <p><b>Current Page:</b> <?php echo $page_name; ?></p>
