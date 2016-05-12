@@ -66,6 +66,12 @@ function Audigree_Get_Person($query){
   }
 }
 
+function pd($var){
+  echo '<pre>';
+  var_dump($var);
+  echo '</pre>';
+}
+
 function audigree_automatic_pedigree(){
   global $wpdb; /*this is the object that lets us run queries*/
   
@@ -78,16 +84,15 @@ function audigree_automatic_pedigree(){
     $page_name=strtolower($page_name);
     $this_person=Audigree_Get_Person($page_name);
     
-    echo '<pre>';
     echo 'Current Page: '.$page_name."\n";
-    var_dump($this_person);
-    echo '</pre>'."\n\n";
+    pd($this_person);
     
     ?>
   
       <?php 
        /*get father name and path*/
-       
+       $father=Audigree_Get_Person($this_person->father_id);
+       pd($father);
       ?>
       <p><b>Father: </b> <a href="#"><?php  ?></a></p>
       <p><b>Mother: </b> <a href="#">Mother's Name</a></p>
