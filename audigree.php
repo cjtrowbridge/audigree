@@ -50,13 +50,14 @@ function audigree_automatic_pedigree(){
       ";
     }
     $this_person = $wpdb->get_results($sql, OBJECT);
+    echo '<pre>';
+    echo Current Page: '.$page_name."\n";
     var_dump($this_person);
-    
-    
+    echo '</pre>'."\n\n";
     
     ?>
   
-      <p><b>Current Page:</b> <?php echo $page_name; ?></p>
+      
       <p><b>Father: </b> <a href="#"><?php /*$results = $wpdb->get_results( 'SELECT * FROM audigree_person WHERE person_id=3', OBJECT );*/ ?></a></p>
       <p><b>Mother: </b> <a href="#">Mother's Name</a></p>
       
