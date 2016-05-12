@@ -7,23 +7,17 @@
 * Author URI: https://github.com/audigree
 */
 
-function audigree_automatic_pedigree(){
+function Audigree_Get_Person($query){
   global $wpdb; /*this is the object that lets us run queries*/
   
-  $path=parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
-  $number_of_slashes_in_request=substr_count($path, '/');
-  
-  if($number_of_slashes_in_request<=2){
-    //this is a single argument path, and probably a page for a person
-    $page_name=str_replace('/','',$path);
-    $page_name=strtolower($page_name);
-    $this_person_name_parts=explode('-',$page_name);
+  $person_id=intval($query);
+  if($person_id==0){
+    /*this was probably text passed instead of an id*/
+    $this_person_name_parts=explode('-',$query);
     if(count($this_person_name_parts)<1){
       echo 'Person Not Found';
       return;
     }
-    
-    /*get info about this person*/
     $sql="
       SELECT * 
       FROM audigree_person 
@@ -50,6 +44,36 @@ function audigree_automatic_pedigree(){
       ";
     }
     $this_person = $wpdb->get_results($sql, OBJECT);
+    return $this_person;
+  }else{
+    //get person by id
+    if($person_id==0){
+      echo 'Invalid Person ID';
+      return;
+    }
+    $sql="
+      SELECT * 
+      FROM audigree_person 
+      WHERE 
+        person_id = '".$person_id."'
+    ";
+    $this_person = $wpdb->get_results($sql, OBJECT);
+    return $this_person;
+  }
+}
+
+function audigree_automatic_pedigree(){
+  global $wpdb; /*this is the object that lets us run queries*/
+  
+  $path=parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
+  $number_of_slashes_in_request=substr_count($path, '/');
+  
+  if($number_of_slashes_in_request<=2){
+    //this is a single argument path, and probably a page for a person
+    $page_name=str_replace('/','',$path);
+    $page_name=strtolower($page_name);
+    $this_person=Audigree_Get_Person($page_name);
+    
     echo '<pre>';
     echo 'Current Page: '.$page_name."\n";
     var_dump($this_person);
