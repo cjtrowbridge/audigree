@@ -51,7 +51,7 @@ function audigree_automatic_pedigree(){
     }
     $this_person = $wpdb->get_results($sql, OBJECT);
     echo '<pre>';
-    echo Current Page: '.$page_name."\n";
+    echo 'Current Page: '.$page_name."\n";
     var_dump($this_person);
     echo '</pre>'."\n\n";
     
