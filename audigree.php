@@ -43,6 +43,9 @@ function Audigree_Get_Person($query){
         AND name_suffix LIKE '".$wpdb->esc_like($this_person_name_parts[3])."'
       ";
     }
+   $sql.="
+      LIMIT 1
+    ";
     $this_person = $wpdb->get_results($sql, OBJECT);
     return $this_person[0];
   }else{
@@ -56,6 +59,7 @@ function Audigree_Get_Person($query){
       FROM audigree_person 
       WHERE 
         person_id = '".$person_id."'
+      LIMIT 1
     ";
     $this_person = $wpdb->get_results($sql, OBJECT);
     return $this_person[0];
