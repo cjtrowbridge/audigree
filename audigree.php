@@ -10,8 +10,10 @@
 function audigree_automatic_pedigree(){
   
   $path=parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
+  $number_of_slashes_in_request=substr_count($path, '/');
+  echo $number_of_slashes_in_request;
   
-  if(substr_count($path, '/')>=2){
+  if($number_of_slashes_in_request>=2){
     //this is a single argument path, and probably a page for a person
     $page_name=str_replace('/','',$path);
     $page_name=strtolower($page_name);
