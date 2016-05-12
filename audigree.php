@@ -186,6 +186,7 @@ function audigree_automatic_pedigree(){
     $page_name=str_replace('/','',$path);
     $page_name=strtolower($page_name);
     $this_person=Audigree_Get_Person($page_name);
+    pd($this_person);
     ?>
     <p><?php echo $this_person->date_of_birth.' ('.$this_person->place_of_birth.')'; ?> - <?php echo $this_person->date_of_birth.' ('.$this_person->place_of_death.')'; ?></p>
     <br>
