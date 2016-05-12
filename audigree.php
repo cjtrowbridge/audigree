@@ -123,13 +123,16 @@ function audigree_automatic_pedigree(){
   
       <?php 
       /*get father name and slug*/
-      $father=Audigree_Get_Person($this_person->father_id);
       $father_name=Audigree_Get_Name_By_ID($this_person->father_id);
       $father_slug=Audigree_Get_Slug_By_ID($this_person->father_id);
-      
       ?>
       <p><b>Father: </b> <a href="/<?php echo $father_slug; ?>"><?php echo $father_name; ?></a></p>
-      <p><b>Mother: </b> <a href="#">Mother's Name</a></p>
+      <?php 
+      /*get mother name and slug*/
+      $mother_name=Audigree_Get_Name_By_ID($this_person->mother_id);
+      $mother_name=Audigree_Get_Slug_By_ID($this_person->mother_id);
+      ?>
+      <p><b>Mother: </b> <a href="/<?php echo $mother_slug; ?>"><?php echo $mother_name; ?></a></p>
       
       <b>Siblings:</b>
       <ul>
