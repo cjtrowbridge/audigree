@@ -186,9 +186,20 @@ function audigree_automatic_pedigree(){
     $page_name=str_replace('/','',$path);
     $page_name=strtolower($page_name);
     $this_person=Audigree_Get_Person($page_name);
-    pd($this_person);
     ?>
-    <p><?php echo $this_person->date_of_birth.' ('.$this_person->place_of_birth.')'; ?> - <?php echo $this_person->date_of_birth.' ('.$this_person->place_of_death.')'; ?></p>
+    <p><?php 
+      
+      echo '<b>Date of Birth:</b> '
+      if($this_person->date_of_birth==''){echo '<unknown>Unknown</unknown>';}else{echo $this_person->date_of_birth;}
+      if($this_person->place_of_birth==''){echo ' <unknown>(Unknown Place)</unknown>';}else{echo ' ('.$this_person->place_of_birth.')';}
+      
+      ?> - <?php 
+      
+      echo $this_person->date_of_death.' ('.$this_person->place_of_death.')'; 
+      if($this_person->date_of_death==''){echo '<unknown>Unknown</unknown>';}else{echo $this_person->date_of_death;}
+      if($this_person->place_of_death==''){echo ' <unknown>(Unknown Place)</unknown>';}else{echo ' ('.$this_person->place_of_death.')';}
+      
+    ?></p>
     <br>
     <?php
     /*get father name and slug*/
