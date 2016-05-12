@@ -6,7 +6,30 @@
 * Author: CJ Trowbridge
 * Author URI: https://github.com/audigree
 */
-
+function Audigree_Get_Siblings_By_Parent_IDs($id1,$id2){
+  global $wpdb; /*this is the object that lets us run queries*/
+  
+  $id1=intval($id1);
+  $id2=intval($id2);
+  if(
+    ($id1==0)||
+    ($id2==0)
+  ){
+    echo 'Person Not Found';
+    return;
+  }
+    $sql="
+      SELECT person_id
+      FROM audigree_person 
+      WHERE 
+        mother_id = '".$id1."' OR
+        father_id = '".$id1."' OR
+        mother_id = '".$id2."' OR
+        father_id = '".$id2."'
+    ";
+    $siblings = $wpdb->get_results($sql, OBJECT);
+    return $siblings;
+}
 function Audigree_Get_Person($query){
   global $wpdb; /*this is the object that lets us run queries*/
   
@@ -116,36 +139,40 @@ function audigree_automatic_pedigree(){
     $page_name=strtolower($page_name);
     $this_person=Audigree_Get_Person($page_name);
     
-    echo 'Current Page: '.$page_name."\n";
-    pd($this_person);
-    
+    /*get father name and slug*/
+    $father_name=Audigree_Get_Name_By_ID($this_person->father_id);
+    $father_slug=Audigree_Get_Slug_By_ID($this_person->father_id);
     ?>
-  
+    <p><b>Father: </b> <a href="/<?php echo $father_slug; ?>"><?php echo $father_name; ?></a></p>
+    <?php 
+    /*get mother name and slug*/
+    $mother_name=Audigree_Get_Name_By_ID($this_person->mother_id);
+    $mother_slug=Audigree_Get_Slug_By_ID($this_person->mother_id);
+    ?>
+    <p><b>Mother: </b> <a href="/<?php echo $mother_slug; ?>"><?php echo $mother_name; ?></a></p>
+    
+    <b>Siblings:</b>
+    <ul>
       <?php 
-      /*get father name and slug*/
-      $father_name=Audigree_Get_Name_By_ID($this_person->father_id);
-      $father_slug=Audigree_Get_Slug_By_ID($this_person->father_id);
-      ?>
-      <p><b>Father: </b> <a href="/<?php echo $father_slug; ?>"><?php echo $father_name; ?></a></p>
-      <?php 
-      /*get mother name and slug*/
-      $mother_name=Audigree_Get_Name_By_ID($this_person->mother_id);
-      $mother_slug=Audigree_Get_Slug_By_ID($this_person->mother_id);
-      ?>
-      <p><b>Mother: </b> <a href="/<?php echo $mother_slug; ?>"><?php echo $mother_name; ?></a></p>
       
-      <b>Siblings:</b>
-      <ul>
-        <li>sibling a</li>
-        <li>sibling b</li>
-      </ul>
+      $siblings=Audigree_Get_Siblings_By_Parent_IDs($this_person->mother_id, $this_person->father_id);
+      foreach($siblings as $sibling){
+        $sibling_name=Audigree_Get_Name_By_ID($sibling->person_id);
+        $sibling_slug=Audigree_Get_Slug_By_ID($sibling->person_id);
+        ?>
+        <p><a href="/<?php echo $sibling_slug; ?>"><?php echo $sibling_name; ?></a></p>
+        <?php
+      }
       
-      <b>Children:</b>
-      <ul>
-        <li>child a</li>
-        <li>child b</li>
-      </ul>
-    <?php
+      ?>
+    </ul>
+    
+    <b>Children:</b>
+    <ul>
+      <li>child a</li>
+      <li>child b</li>
+    </ul>
+  <?php
   }
   
   
