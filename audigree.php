@@ -189,16 +189,18 @@ function audigree_automatic_pedigree(){
     ?>
     <p><?php 
       
-      echo '<b>Date of Birth:</b> '
+      echo '<b>Born:</b> ';
       if($this_person->date_of_birth==''){echo '<unknown>Unknown</unknown>';}else{echo $this_person->date_of_birth;}
       if($this_person->place_of_birth==''){echo ' <unknown>(Unknown Place)</unknown>';}else{echo ' ('.$this_person->place_of_birth.')';}
       
-      ?> - <?php 
+      if(!($this_person->date_of_death=='')){
       
-      echo $this_person->date_of_death.' ('.$this_person->place_of_death.')'; 
-      if($this_person->date_of_death==''){echo '<unknown>Unknown</unknown>';}else{echo $this_person->date_of_death;}
-      if($this_person->place_of_death==''){echo ' <unknown>(Unknown Place)</unknown>';}else{echo ' ('.$this_person->place_of_death.')';}
-      
+        ?> - <b>Died:</b> <?php 
+        
+        if($this_person->date_of_death==''){echo '<unknown>Unknown</unknown>';}else{echo $this_person->date_of_death;}
+        if($this_person->place_of_death==''){echo ' <unknown>(Unknown Place)</unknown>';}else{echo ' ('.$this_person->place_of_death.')';}
+        
+      }
     ?></p>
     <br>
     <?php
