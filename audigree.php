@@ -44,7 +44,7 @@ function Audigree_Get_Person($query){
       ";
     }
     $this_person = $wpdb->get_results($sql, OBJECT);
-    return $this_person->0;
+    return $this_person;
   }else{
     //get person by id
     if($person_id==0){
@@ -58,7 +58,7 @@ function Audigree_Get_Person($query){
         person_id = '".$person_id."'
     ";
     $this_person = $wpdb->get_results($sql, OBJECT);
-    return $this_person->0;
+    return $this_person;
   }
 }
 
@@ -83,7 +83,7 @@ function audigree_automatic_pedigree(){
   
       <?php 
        /*get father name and path*/
-       if()
+       
       ?>
       <p><b>Father: </b> <a href="#"><?php  ?></a></p>
       <p><b>Mother: </b> <a href="#">Mother's Name</a></p>
