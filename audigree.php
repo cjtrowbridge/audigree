@@ -128,7 +128,7 @@ function audigree_automatic_pedigree(){
       $father_slug=Audigree_Get_Slug_By_ID($this_person->father_id);
       
       ?>
-      <p><b>Father: </b> <a href="<?php echo $father_slug; ?>"><?php echo $father_name; ?></a></p>
+      <p><b>Father: </b> <a href="/<?php echo $father_slug; ?>"><?php echo $father_name; ?></a></p>
       <p><b>Mother: </b> <a href="#">Mother's Name</a></p>
       
       <b>Siblings:</b>
