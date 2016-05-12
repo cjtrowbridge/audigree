@@ -130,7 +130,7 @@ function audigree_automatic_pedigree(){
       <?php 
       /*get mother name and slug*/
       $mother_name=Audigree_Get_Name_By_ID($this_person->mother_id);
-      $mother_name=Audigree_Get_Slug_By_ID($this_person->mother_id);
+      $mother_slug=Audigree_Get_Slug_By_ID($this_person->mother_id);
       ?>
       <p><b>Mother: </b> <a href="/<?php echo $mother_slug; ?>"><?php echo $mother_name; ?></a></p>
       
