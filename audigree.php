@@ -160,7 +160,7 @@ function audigree_automatic_pedigree(){
         $sibling_name=Audigree_Get_Name_By_ID($sibling->person_id);
         $sibling_slug=Audigree_Get_Slug_By_ID($sibling->person_id);
         ?>
-        <p><a href="/<?php echo $sibling_slug; ?>"><?php echo $sibling_name; ?></a></p>
+        <li><a href="/<?php echo $sibling_slug; ?>"><?php echo $sibling_name; ?></a></li>
         <?php
       }
       
