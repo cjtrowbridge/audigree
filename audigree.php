@@ -156,6 +156,7 @@ function audigree_automatic_pedigree(){
       <?php 
       
       $siblings=Audigree_Get_Siblings_By_Parent_IDs($this_person->mother_id, $this_person->father_id);
+      echo count($siblings);
       foreach($siblings as $sibling){
         $sibling_name=Audigree_Get_Name_By_ID($sibling->person_id);
         $sibling_slug=Audigree_Get_Slug_By_ID($sibling->person_id);
