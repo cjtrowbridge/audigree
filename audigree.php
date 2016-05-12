@@ -72,6 +72,38 @@ function pd($var){
   echo '</pre>';
 }
 
+function Audigree_Get_Slug_By_ID($id){
+  $this_person=Audigree_Get_Person($id);
+  $this_person_slug= $this_person->name_first;
+  
+  foreach(array(
+      $this_person->name_middle,
+      $this_person->name_last,
+      $this_person->name_suffix
+  ) as $name_part){
+    if(!($name_part=='')){
+      $this_person_slug.='-'.$name_part;
+    }
+  }
+  return strtolower($this_person_slug);
+}
+
+function Audigree_Get_Name_By_ID($id){
+  $this_person=Audigree_Get_Person($id);
+  $this_person_name= $this_person->name_first;
+  
+  foreach(array(
+      $this_person->name_middle,
+      $this_person->name_last,
+      $this_person->name_suffix
+  ) as $name_part){
+    if(!($name_part=='')){
+      $this_person_name.=' '.$name_part;
+    }
+  }
+  return $this_person_name;
+}
+
 function audigree_automatic_pedigree(){
   global $wpdb; /*this is the object that lets us run queries*/
   
@@ -90,11 +122,13 @@ function audigree_automatic_pedigree(){
     ?>
   
       <?php 
-       /*get father name and path*/
-       $father=Audigree_Get_Person($this_person->father_id);
-       pd($father);
+      /*get father name and slug*/
+      $father=Audigree_Get_Person($this_person->father_id);
+      $father_name=Audigree_Get_Name_By_ID($this_person->father_id);
+      $father_slug=Audigree_Get_Slug_By_ID($this_person->father_id);
+      
       ?>
-      <p><b>Father: </b> <a href="#"><?php  ?></a></p>
+      <p><b>Father: </b> <a href="<?php echo $father_slug; ?>"><?php echo $father_name; ?></a></p>
       <p><b>Mother: </b> <a href="#">Mother's Name</a></p>
       
       <b>Siblings:</b>
