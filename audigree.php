@@ -30,6 +30,26 @@ function Audigree_Get_Siblings_By_Parent_IDs($id1,$id2){
     $siblings = $wpdb->get_results($sql, OBJECT);
     return $siblings;
 }
+function Audigree_Get_Children_By_Parent_ID($id){
+  global $wpdb; /*this is the object that lets us run queries*/
+  
+  $id=intval($id);
+  if(
+    ($id==0)
+  ){
+    echo 'Person Not Found';
+    return;
+  }
+    $sql="
+      SELECT person_id
+      FROM audigree_person 
+      WHERE 
+        mother_id = '".$id."' OR
+        father_id = '".$id."'
+    ";
+    $children = $wpdb->get_results($sql, OBJECT);
+    return $children;
+}
 function Audigree_Get_Person($query){
   global $wpdb; /*this is the object that lets us run queries*/
   
@@ -156,7 +176,9 @@ function audigree_automatic_pedigree(){
       <?php 
       
       $siblings=Audigree_Get_Siblings_By_Parent_IDs($this_person->mother_id, $this_person->father_id);
-      echo count($siblings);
+      if(count($siblings)==0){
+        echo '<li>None Found</li>';
+      }
       foreach($siblings as $sibling){
         $sibling_name=Audigree_Get_Name_By_ID($sibling->person_id);
         $sibling_slug=Audigree_Get_Slug_By_ID($sibling->person_id);
@@ -170,8 +192,21 @@ function audigree_automatic_pedigree(){
     
     <b>Children:</b>
     <ul>
-      <li>child a</li>
-      <li>child b</li>
+      <?php 
+      
+      $children=Audigree_Get_Children_By_Parent_IDs($this_person->mother_id, $this_person->father_id);
+      if(count($children)==0){
+        echo '<li>None Found</li>';
+      }
+      foreach($children as $child){
+        $child_name=Audigree_Get_Name_By_ID($child->person_id);
+        $child_slug=Audigree_Get_Slug_By_ID($child->person_id);
+        ?>
+        <li><a href="/<?php echo $child_slug; ?>"><?php echo $child_name; ?></a></li>
+        <?php
+      }
+      
+      ?>
     </ul>
   <?php
   }
