@@ -69,12 +69,12 @@ function Audigree_Get_Person($query){
         name_middle,
         name_maiden,
         name_last,
-        ifnull(date_of_birth,'Unknown') as date_of_birth,
-        ifnull(date_of_death,'Unknown') as date_of_death,
+        date_of_birth,
+        date_of_death,
         father_id,
         mother_id,
-        ifnull(place_of_birth,'Unknown') as place_of_birth,
-        ifnull(place_of_death,'Unknown') as place_of_death,
+        place_of_birth,
+        place_of_death,
         /*biography,*/
         image_uri
       FROM audigree_person 
@@ -119,12 +119,12 @@ function Audigree_Get_Person($query){
         name_middle,
         name_maiden,
         name_last,
-        ifnull(date_of_birth,'Unknown') as date_of_birth,
-        ifnull(date_of_death,'Unknown') as date_of_death,
+        date_of_birth,
+        date_of_death,
         father_id,
         mother_id,
-        ifnull(place_of_birth,'Unknown') as place_of_birth,
-        ifnull(place_of_death,'Unknown') as place_of_death,
+        place_of_birth,
+        place_of_death,
         /*biography,*/
         image_uri
       FROM audigree_person 
