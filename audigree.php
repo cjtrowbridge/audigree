@@ -76,7 +76,7 @@ function Audigree_Get_Person($query){
         ifnull(place_of_birth,'Unknown') as place_of_birth,
         ifnull(place_of_death,'Unknown') as place_of_death,
         /*biography,*/
-        image_url
+        image_uri
       FROM audigree_person 
       WHERE 
         name_first LIKE '".$wpdb->esc_like($this_person_name_parts[0])."'
@@ -127,7 +127,7 @@ function Audigree_Get_Person($query){
         ifnull(place_of_birth,'Unknown') as place_of_birth,
         ifnull(place_of_death,'Unknown') as place_of_death,
         /*biography,*/
-        image_url
+        image_uri
       FROM audigree_person 
       WHERE 
         person_id = '".$person_id."'
