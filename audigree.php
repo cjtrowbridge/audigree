@@ -10,7 +10,7 @@
 function audigree_automatic_pedigree(){
   ?>
   
-  <p><b>Current Page:</b> <?php echo $pagename; ?></p>
+  <p><b>Current Page:</b> <?php var_dump(parse_url($url, PHP_URL_PATH)); ?></p>
   
   <p><b>Father: </b> <a href="#">Father's Name</a></p>
   <p><b>Mother: </b> <a href="#">Mother's Name</a></p>
