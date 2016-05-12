@@ -28,25 +28,25 @@ function audigree_automatic_pedigree(){
       SELECT * 
       FROM audigree_person 
       WHERE 
-        name_first LIKE '".mysql_real_escape_string($this_person_name_parts[0])."'
+        name_first LIKE '".$wpdb->esc_like($this_person_name_parts[0])."'
     ";
     if(isset($this_person_name_parts[1])){
       $sql.="
-        AND name_middle LIKE '".mysql_real_escape_string($this_person_name_parts[1])."'
+        AND name_middle LIKE '".$wpdb->esc_like($this_person_name_parts[1])."'
       ";
     }
     if(isset($this_person_name_parts[2])){
       $sql.="
         AND 
         (
-          name_last LIKE '".mysql_real_escape_string($this_person_name_parts[2])."' OR
-          name_maiden LIKE '".mysql_real_escape_string($this_person_name_parts[2])."'
+          name_last LIKE '".$wpdb->esc_like($this_person_name_parts[2])."' OR
+          name_maiden LIKE '".$wpdb->esc_like($this_person_name_parts[2])."'
         )
       ";
     }
     if(isset($this_person_name_parts[3])){
       $sql.="
-        AND name_suffix LIKE '".mysql_real_escape_string($this_person_name_parts[3])."'
+        AND name_suffix LIKE '".$wpdb->esc_like($this_person_name_parts[3])."'
       ";
     }
     $this_person = $wpdb->get_results($sql, OBJECT);
