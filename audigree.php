@@ -191,14 +191,14 @@ function audigree_automatic_pedigree(){
       
       echo '<b>Born:</b> ';
       if($this_person->date_of_birth==''){echo '<unknown>Unknown</unknown>';}else{echo $this_person->date_of_birth;}
-      if($this_person->place_of_birth==''){echo ' <unknown>(Unknown Place)</unknown>';}else{echo ' ('.$this_person->place_of_birth.')';}
+      if($this_person->place_of_birth==''){echo ' <unknown>(Unknown Place)</unknown>';}else{echo ' (<a href="https://www.google.com/maps/place/'.urlencode($this_person->place_of_birth).'" target="_blank">'.$this_person->place_of_birth.'</a>)';}
       
       if(!($this_person->date_of_death=='')){
       
         ?> - <b>Died:</b> <?php 
         
         if($this_person->date_of_death==''){echo '<unknown>Unknown</unknown>';}else{echo $this_person->date_of_death;}
-        if($this_person->place_of_death==''){echo ' <unknown>(Unknown Place)</unknown>';}else{echo ' ('.$this_person->place_of_death.')';}
+        if($this_person->place_of_death==''){echo ' <unknown>(Unknown Place)</unknown>';}else{echo ' (<a href="https://www.google.com/maps/place/'.urlencode($this_person->place_of_death).'" target="_blank">'.$this_person->place_of_death.'</a>)';}
         
       }
     ?></p>
