@@ -194,7 +194,7 @@ function audigree_automatic_pedigree(){
     <ul>
       <?php 
       
-      $children=Audigree_Get_Children_By_Parent_IDs($this_person->mother_id, $this_person->father_id);
+      $children=Audigree_Get_Children_By_Parent_ID($this_person->person_id);
       if(count($children)==0){
         echo '<li>None Found</li>';
       }
