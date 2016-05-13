@@ -86,6 +86,7 @@ function audigree_automatic_pedigree(){
     </ul>
   <?php
     }
+    echo nl2br($this_person->bio);
   }
 }
 
