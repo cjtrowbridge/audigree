@@ -25,7 +25,7 @@ function Audigree_Get_Person($query){
         mother_id,
         place_of_birth,
         place_of_death,
-        /*biography,*/
+        biography,
         image_uri
       FROM audigree_person 
       WHERE 
