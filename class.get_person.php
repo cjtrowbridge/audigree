@@ -33,7 +33,10 @@ function Audigree_Get_Person($query){
     ";
     if(isset($this_person_name_parts[1])){
       $sql.="
-        AND name_middle LIKE '".$wpdb->esc_like($this_person_name_parts[1])."'
+        AND (
+          name_middle LIKE '".$wpdb->esc_like($this_person_name_parts[1])."' OR
+          name_last LIKE '".$wpdb->esc_like($this_person_name_parts[1])."'
+        )
       ";
     }
     if(isset($this_person_name_parts[2])){
