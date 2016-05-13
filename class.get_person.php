@@ -8,7 +8,7 @@ function Audigree_Get_Person($query){
     /*this was probably text passed instead of an id*/
     $this_person_name_parts=explode('-',$query);
     if(count($this_person_name_parts)<1){
-      echo 'Person Not Found';
+      //echo 'Person Not Found';
       return;
     }
     $sql="
@@ -62,7 +62,7 @@ function Audigree_Get_Person($query){
   }else{
     //get person by id
     if($person_id==0){
-      echo 'Invalid Person ID';
+      //echo 'Invalid Person ID';
       return;
     }
     $sql="
