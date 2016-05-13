@@ -7,7 +7,7 @@ function Audigree_Get_Children_By_Parent_ID($id){
   if(
     ($id==0)
   ){
-    echo 'Person Not Found';
+    //echo 'Person Not Found';
     return;
   }
     $sql="
