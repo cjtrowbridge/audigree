@@ -6,10 +6,10 @@ function Audigree_Get_Siblings_By_Parent_IDs($id1,$id2,$self_id){
   $id1=intval($id1);
   $id2=intval($id2);
   if(
-    ($id1==0)||
+    ($id1==0)&&
     ($id2==0)
   ){
-    echo 'Person Not Found';
+    //echo 'Person Not Found';
     return;
   }
     $sql="
