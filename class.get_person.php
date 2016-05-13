@@ -19,6 +19,7 @@ function Audigree_Get_Person($query){
         name_middle,
         name_maiden,
         name_last,
+        name_suffix,
         date_of_birth,
         date_of_death,
         father_id,
