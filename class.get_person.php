@@ -55,7 +55,7 @@ function Audigree_Get_Person($query){
    $sql.="
       LIMIT 1
     ";
-    if(is_admin()) {
+    if(current_user_can( 'manage_options' )){
       ?>
       <!--
       <?php echo $sql; ?>
@@ -91,7 +91,7 @@ function Audigree_Get_Person($query){
         person_id = '".$person_id."'
       LIMIT 1
     ";
-    if(is_admin()) {
+    if(current_user_can( 'manage_options' )){
       ?>
       <!--
       <?php echo $sql; ?>
