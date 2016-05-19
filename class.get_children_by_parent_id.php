@@ -16,6 +16,7 @@ function Audigree_Get_Children_By_Parent_ID($id){
       WHERE 
         mother_id = '".$id."' OR
         father_id = '".$id."'
+      ORDER BY date_of_birth ASC
     ";
     $children = $wpdb->get_results($sql, OBJECT);
     return $children;
