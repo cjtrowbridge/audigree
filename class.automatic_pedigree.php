@@ -29,10 +29,20 @@ function audigree_automatic_pedigree(){
       if(is_admin()) {
         ?>
          <!--
+         
+         You are an admin.
           
           <?php var_dump($this_person); ?>
           
           -->
+        <?php
+      }else{
+        ?>
+        <!--
+        
+        You are not an admin.
+        
+        -->
         <?php
       }
         
