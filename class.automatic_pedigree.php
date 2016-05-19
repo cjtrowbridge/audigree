@@ -26,7 +26,7 @@ function audigree_automatic_pedigree(){
       <p>
       <?php 
       
-      if(is_admin()) {
+      if(current_user_can( 'manage_options' )){
         ?>
          <!--
          
