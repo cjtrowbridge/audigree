@@ -24,12 +24,17 @@ function audigree_automatic_pedigree(){
     </style>
     <div class="audigree">
       <p>
-      <!--
-      
-      <?php var_dump($this_person); ?>
-      
-      -->
       <?php 
+      
+      if(is_admin()) {
+        ?>
+         <!--
+          
+          <?php var_dump($this_person); ?>
+          
+          -->
+        <?php
+      }
         
         echo '<b>Born:</b> ';
         if($this_person->date_of_birth==''){echo '<unknown>Unknown</unknown>';}else{echo $this_person->date_of_birth;}
