@@ -43,7 +43,8 @@ function Audigree_Get_Person($query){
       $sql.="
         AND 
         (
-          name_last LIKE '".$wpdb->esc_like($this_person_name_parts[2])."'
+          name_last LIKE '".$wpdb->esc_like($this_person_name_parts[2])."' OR
+          name_suffix LIKE '".$wpdb->esc_like($this_person_name_parts[2])."'
         )
       ";
     }
