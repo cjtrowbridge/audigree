@@ -88,7 +88,7 @@ function audigree_automatic_pedigree(){
     }
     if(!(trim($this_person->biography)=='')){
       $nl2p = str_replace("\n", "</p>\n<p>", '<p>'.$this_person->biography.'</p>');
-      echo '<b>Biography and Notes:</b><br>'
+      echo '<b>Biography and Notes:</b><br>';
       echo $nl2p;
     }
   }
