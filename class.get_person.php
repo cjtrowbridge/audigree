@@ -55,6 +55,13 @@ function Audigree_Get_Person($query){
    $sql.="
       LIMIT 1
     ";
+    if(is_admin()) {
+      ?>
+      <!--
+      <?php echo $sql; ?>
+      -->
+      <?php
+    }
     $this_person = $wpdb->get_results($sql, OBJECT);
     return $this_person[0];
   }else{
@@ -84,6 +91,13 @@ function Audigree_Get_Person($query){
         person_id = '".$person_id."'
       LIMIT 1
     ";
+    if(is_admin()) {
+      ?>
+      <!--
+      <?php echo $sql; ?>
+      -->
+      <?php
+    }
     $this_person = $wpdb->get_results($sql, OBJECT);
     return $this_person[0];
   }
